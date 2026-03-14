@@ -507,7 +507,7 @@ class Game:
                     tile = self.tmx_map.get_tile_image_by_gid(gid)
 
                     if tile:
-                        portal= Portal( x * self.tmx_map.tilewidth * TILE_SCALE, y * self.tmx_map.tileheight * TILE_SCALE)
+                        portal = Portal( x * self.tmx_map.tilewidth * TILE_SCALE, y * self.tmx_map.tileheight * TILE_SCALE)
                         self.all_sprites.add(portal)
                         self.portals.add(portal)
 
@@ -585,16 +585,16 @@ class Game:
         for hit in pg.sprite.spritecollide(self.player, self.coins, True):
             self.collected_coins += 1
 
-        hit in pg.sprite.spritecollide(self.player, self.portals, False, pg.sprite.collide_mask):
-        self.level += 1
-        if self.level == 3:
-            quit()
+        if pg.sprite.spritecollide(self.player, self.portals, False, pg.sprite.collide_mask):
+            self.level += 1
+            if self.level == 3:
+                quit()
 
 
 
             self.setup()
 
-        hits = pg.sprite.spritecollide(self.player, self.portals, False, pg.sprite.collide_mask)
+
         if self.collected_coins > self.coins_amount / 2:
             for hit in hits:
                 self.level += 1
